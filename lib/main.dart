@@ -5,27 +5,38 @@ import 'package:taskmenager/screen/onboarding/pinVerificationScreen.dart';
 import 'package:taskmenager/screen/onboarding/registrationScreen.dart';
 import 'package:taskmenager/screen/onboarding/setPasswordScreen.dart';
 import 'package:taskmenager/screen/onboarding/splashScreen.dart';
+import 'package:taskmenager/screen/task/newTaskListScreen.dart';
+import 'package:taskmenager/utility/utility.dart';
 
-void main() {
-  runApp(const MyApp());
+main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  String? token = await ReadUserData('token');
+  if (token == null) {
+    runApp(MyApp('/login'));
+  }
+  else {
+    runApp(MyApp('/login'));
+  }
 }
-
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String FirstRoute;
+  MyApp(this.FirstRoute);
+
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: "Task Menager",
-      initialRoute: '/pinVerification',
+      initialRoute: FirstRoute,
       routes: {
         '/':(context)=>splashScreen(),
         '/login':(context)=>loginScreen(),
         '/pinVerification':(context)=>pinVerificationScreen(),
         '/registration':(context)=>registrationScreen(),
         '/emailVerificationScreen':(context)=>emailVerificationScreen(),
-        '/setPassword':(context)=>setPasswordScreen()
+        '/setPassword':(context)=>setPasswordScreen(),
+        '/newTaskListScreen':(context)=>newTaskListScreen()
 
       },
 
