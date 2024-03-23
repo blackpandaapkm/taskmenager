@@ -12,7 +12,7 @@ class registrationScreen extends StatefulWidget {
 
 class _registrationScreenState extends State<registrationScreen> {
 
-  Map<String,String> FormValues = {"email":"","firstname":"","lastname":"","mobile":"","password":"","photo":"","cpassword":""};
+  Map<String,String> FormValues = {"email":"","firstName":"","lastName":"","mobile":"","password":"","photo":"","cpassword":""};
   bool Loading = false;
 
   InputOnChange(MapKey,Textvalue){
@@ -26,10 +26,10 @@ class _registrationScreenState extends State<registrationScreen> {
     if(FormValues['email']!.length == 0){
       ErrorToast('Email Required !!');
     }
-    else if(FormValues['firstname']!.length == 0){
+    else if(FormValues['firstName']!.length == 0){
       ErrorToast('Firstname Required !!');
     }
-    else if(FormValues['lastname']!.length == 0){
+    else if(FormValues['lastName']!.length == 0){
       ErrorToast('Lastname Required !!');
     }
     else if(FormValues['mobile']!.length == 0){
@@ -48,6 +48,7 @@ class _registrationScreenState extends State<registrationScreen> {
       setState(() {
         Loading=true;
       });
+
       bool res=await RegistrationRequest(FormValues);
       if(res == true){
         Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
@@ -97,14 +98,14 @@ class _registrationScreenState extends State<registrationScreen> {
                     TextFormField(
                       decoration: AppInputDecoration("First Name"),
                       onChanged: (Textvalue){
-                        InputOnChange("firstname", Textvalue);
+                        InputOnChange("firstName", Textvalue);
                       },
                     ),
                     SizedBox(height: 20),
                     TextFormField(
                       decoration: AppInputDecoration("Last Name"),
                       onChanged: (Textvalue){
-                        InputOnChange("lastname", Textvalue);
+                        InputOnChange("lastName", Textvalue);
                       },
                     ),
                     SizedBox(height: 20),

@@ -5,7 +5,8 @@ import 'package:taskmenager/screen/onboarding/pinVerificationScreen.dart';
 import 'package:taskmenager/screen/onboarding/registrationScreen.dart';
 import 'package:taskmenager/screen/onboarding/setPasswordScreen.dart';
 import 'package:taskmenager/screen/onboarding/splashScreen.dart';
-import 'package:taskmenager/screen/task/newTaskListScreen.dart';
+import 'package:taskmenager/screen/task/homeScreen.dart';
+import 'package:taskmenager/screen/task/taskCreateScreen.dart';
 import 'package:taskmenager/utility/utility.dart';
 
 main() async {
@@ -15,7 +16,8 @@ main() async {
     runApp(MyApp('/login'));
   }
   else {
-    runApp(MyApp('/login'));
+    runApp(MyApp('/homeScreen'));
+    // runApp(MyApp('/taskCreateScreen'));
   }
 }
 class MyApp extends StatelessWidget {
@@ -27,16 +29,20 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Task Menager",
       initialRoute: FirstRoute,
       routes: {
-        '/':(context)=>splashScreen(),
+
+        // '/':(context)=>splashScreen(),
         '/login':(context)=>loginScreen(),
         '/pinVerification':(context)=>pinVerificationScreen(),
         '/registration':(context)=>registrationScreen(),
         '/emailVerificationScreen':(context)=>emailVerificationScreen(),
         '/setPassword':(context)=>setPasswordScreen(),
-        '/newTaskListScreen':(context)=>newTaskListScreen()
+        '/homeScreen':(context)=>homeScreen(),
+        '/taskCreateScreen':(context)=>taskCreateScreen(),
+
 
       },
 

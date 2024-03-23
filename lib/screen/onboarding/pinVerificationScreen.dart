@@ -23,7 +23,7 @@ class _pinVerificationScreenState extends State<pinVerificationScreen> {
     });
   }
   FormOnSubmit() async{
-    if(FormValues['otp']!.length==6){
+    if(FormValues['otp']!.length!=6){
       ErrorToast("OTP Required !");
     }
     else{
